@@ -663,9 +663,11 @@ function getYouTubeEmbed(url) {
   let id = '';
   const m1 = url.match(/[?&]v=([^&]+)/);
   const m2 = url.match(/youtu\.be\/([^?]+)/);
+  const m3 = url.match(/shorts\/([^?&]+)/);
   if (m1) id = m1[1];
   else if (m2) id = m2[1];
-  return id ? `https://www.youtube.com/embed/${id}?autoplay=0&mute=1&controls=0&loop=1&playlist=${id}&modestbranding=1` : null;
+  else if (m3) id = m3[1];
+  return id ? `https://www.youtube.com/embed/${id}?autoplay=0&mute=1&controls=1&loop=1&playlist=${id}&modestbranding=1` : null;
 }
 
 function getVimeoEmbed(url) {
